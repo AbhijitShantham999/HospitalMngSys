@@ -1,0 +1,208 @@
+﻿@* <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HMS</title>
+    *<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/HospitalMngSys.styles.css" asp-append-version="true" />
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            background-color: #0E1624;
+            color: #99A1AF;
+        }
+    </style>
+</head>
+<body>
+    <div class="main w-screen h-screen flex flex-col">
+        <div class="w-full h-9/10">
+            <nav class="flex fle">
+                <div>
+                    <h2>HMS</h2>
+                </div>
+                <div>
+                    <ul>
+                        <li>Patients</li>
+                            <h3>Listall</h3>
+                            <h3>Add</h3>
+                        <li>Doctors</li>
+                            <h3>Listall</h3>
+                            <h3>Add</h3>
+                        <li>Apointments</li>
+                            <h3>Listall</h3>
+                            <h3>Add</h3>
+                    </ul>
+                </div>
+            </nav>
+            <div class="">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+        <footer class="w-full h-1/10 text-center">
+            <div class="container">
+                &copy; 2025 - HospitalMngSys - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html> *@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HMS - Hospital Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0E1624;
+            color: #99A1AF;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex">
+    <!-- Sidebar Navigation -->
+    <div class="w-64 min-h-screen bg-[#0A0F1A] p-4 border-r border-gray-800">
+        <div class="mb-8 p-4 border-b border-gray-800">
+            <h2 class="text-2xl font-bold text-white"><i class="fas fa-hospital mr-2"></i> HMS</h2>
+            <p class="text-sm text-gray-500">Hospital Management System</p>
+        </div>
+
+        <ul class="space-y-2">
+            <!-- Patients Menu -->
+            <li class="relative">
+                <div class="flex items-center p-3 rounded-lg cursor-pointer hover:bg-[#131C2D] transition-all duration-200">
+                    <i class="fas fa-user-injured w-5 mr-3"></i>
+                    <span>Patients</span>
+                    <i class="fas fa-chevron-down ml-auto text-xs"></i>
+                </div>
+                <ul class="ml-8 mt-1 space-y-2">
+                    <li class="p-2 rounded-lg hover:bg-[#131C2D] transition-all duration-200 cursor-pointer" asp-controller="Pateint" asp-action="Index">
+                        <i class="fas fa-list mr-2"></i> <a href="/Patient/Index">List All</a>
+                    </li>
+                    <li class="p-2 rounded-lg hover:bg-[#131C2D] transition-all duration-200 cursor-pointer" asp-controller="Pateint" asp-action="Create">
+                        <i class="fas fa-plus-circle mr-2"></i> <a href="/Patient/Create">Add New</a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- Doctors Menu -->
+            <li class="relative">
+                <div class="flex items-center p-3 rounded-lg cursor-pointer hover:bg-[#131C2D] transition-all duration-200">
+                    <i class="fas fa-user-md w-5 mr-3"></i>
+                    <span>Doctors</span>
+                    <i class="fas fa-chevron-down ml-auto text-xs"></i>
+                </div>
+                <ul class="ml-8 mt-1 space-y-2">
+                    <li class="p-2 rounded-lg hover:bg-[#131C2D] transition-all duration-200 cursor-pointer" asp-controller="Doctor" asp-action="list">
+                        <i class="fas fa-list mr-2"></i> <a href="/Doctor/Index">List All</a>
+                    </li>
+                    <li class="p-2 rounded-lg hover:bg-[#131C2D] transition-all duration-200 cursor-pointer" asp-controller="Doctor" asp-action="add">
+                        <i class="fas fa-plus-circle mr-2"></i> <a href="/Doctor/Create">Add New</a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- Appointments Menu -->
+            <li class="relative">
+                <div class="flex items-center p-3 rounded-lg cursor-pointer hover:bg-[#131C2D] transition-all duration-200">
+                    <i class="fas fa-calendar-check w-5 mr-3"></i>
+                    <span>Appointments</span>
+                    <i class="fas fa-chevron-down ml-auto text-xs"></i>
+                </div>
+                <ul class="ml-8 mt-1 space-y-2">
+                    <li class="p-2 rounded-lg hover:bg-[#131C2D] transition-all duration-200 cursor-pointer" asp-controller="Appointment" asp-action="list">
+                        <i class="fas fa-list mr-2"></i> <a href="/Appointment/Index">List All</a>
+                    </li>
+                    <li class="p-2 rounded-lg hover:bg-[#131C2D] transition-all duration-200 cursor-pointer" asp-controller="Appointment" asp-action="add">
+                        <i class="fas fa-plus-circle mr-2"></i> <a href="/Appointment/Create">Add New</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="bottom-0 left-0 right-0 p-4 border-t border-gray-800">
+            <div class="flex items-center p-2 rounded-lg cursor-pointer">
+                <i class="fas fa-user-circle mr-3"></i>
+                <span>Admin Profile</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col">
+        <!-- Header -->
+        <header class="bg-[#131C2D] p-4 border-b border-gray-800 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-bars mr-4 cursor-pointer md:hidden" id="mobile-menu-btn"></i>
+                <h1 class="text-xl font-semibold">Dashboard Overview</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <i class="fas fa-bell"></i>
+                    <span class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs">3</span>
+                </div>
+                <div class="flex items-center">
+                    <img src="https://i.pravatar.cc/40?img=12" alt="User" class="rounded-full mr-2">
+                    <span>Admin</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6 overflow-auto">
+            @RenderBody()
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-[#131C2D] p-4 border-t border-gray-800 text-center">
+            <div class="container">
+                &copy; 2025 - HospitalMngSys - <a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-blue-400 hover:underline">Privacy</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Simple JavaScript for menu toggle on mobile
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const sidebar = document.querySelector('div.w-64');
+            sidebar.classList.toggle('hidden');
+            sidebar.classList.toggle('absolute');
+            sidebar.classList.toggle('z-50');
+        });
+
+        // Add active state to menu items
+        document.querySelectorAll('nav li').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('nav li').forEach(i => i.classList.remove('bg-[#131C2D]'));
+                this.classList.add('bg-[#131C2D]');
+            });
+        });
+    </script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

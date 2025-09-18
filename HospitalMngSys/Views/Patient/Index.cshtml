@@ -1,0 +1,54 @@
+﻿@model List<HospitalMngSys.Models.Patient>
+
+<div class="mt-4">
+    <table class="table-auto border-collapse border-b border-b-gray-200 w-full">
+        <!-- Table Header -->
+        <thead>
+            <tr class="border-b-2 border-b-gray">
+                <th class="px-6 py-2">Id</th>
+                <th class="px-6 py-2">Name</th>
+                <th class="px-6 py-2">Age</th>
+                <th class="px-6 py-2">Gender</th>
+                <th class="px-6 py-2">Phonenum</th>
+                <th class="px-6 py-2">Address</th>
+                <th class="px-6 py-2">Joined At</th>
+                <th class="px-6 py-2" colspan="3">Actions</th>
+            </tr>
+        </thead>
+
+        <!-- Table Body -->
+        <tbody>
+            @foreach (var patient in Model)
+            {
+                <tr class="mt-5 border-b border-b-gray ">
+                    <td class="px-6 py-2">@patient.PatientId</td>
+                    <td class="px-4 py-2">@patient.Name</td>
+                    <td class="px-4 py-2">@patient.Age</td>
+                    <td class="px-4 py-2">@patient.Gender</td>
+                    <td class="px-4 py-2">@patient.Phonenum</td>
+                    <td class="px-4 py-2">@patient.Address</td>
+                    <td class="px-4 py-2">@patient.Created_at.ToString("yyyy-MM-dd")</td>
+
+                    <!-- Action Buttons -->
+                    <td class="border-b border-b-gray px-4 py-2">
+                        <a href="/Patient/Details/@patient.PatientId"
+                           class="bg-green-600 text-white px-3 py-1 rounded-md hover:bg-green-700">
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+                    </td>
+                    <td class="border-b border-b-gray px-4 py-2">
+                        <a href="/Patient/Edit/@patient.PatientId"
+                           class="bg-blue-600 text-white px-3 py-1 rounded-md hover:bg-blue-700">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                    </td>
+                    <td class="border-b border-b-gray px-4 py-2">
+                        <form asp-controller="Patient" asp-action="Delete" asp-route-id="@patient.PatientId" method="post">
+                            <button type="submit" class="bg-red-600 text-white px-3 py-1 rounded-md hover:bg-red-700"><i class="fa-solid fa-trash"></i></button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,45 @@
+﻿@model HospitalMngSys.Models.Doctor;
+@{
+}
+
+<h2 class="text-2xl font-bold mb-4">Update Doctor</h2>
+
+<form asp-action="Edit" asp-controller="Doctor" method="post" class="space-y-4 max-w-lg">
+    @Html.AntiForgeryToken()
+
+    @* <div asp-validation-summary="All" class="text-red-500 mb-2"></div> *@
+
+    <input type="hidden" asp-for="DoctorId" />
+
+    <div>
+        <label asp-for="Name" class="block text-gray-400 font-bold mb-1"></label>
+        <input asp-for="Name" class="border border-gray-300 bg-[#0E1624] rounded-md w-full p-2" />
+        <span asp-validation-for="Name" class="text-red-500 text-sm"></span>
+    </div>
+
+    <div>
+        <label asp-for="Specialization" class="block text-gray-400 font-bold mb-1"></label>
+        <input asp-for="Specialization" class="border border-gray-300 bg-[#0E1624] rounded-md w-full p-2" />
+        <span asp-validation-for="Specialization" class="text-red-500 text-sm"></span>
+    </div>
+
+    <div>
+        <label asp-for="Consultation_fee" class="block text-gray-400 font-bold mb-1"></label>
+        <input asp-for="Consultation_fee" class="border border-gray-300 bg-[#0E1624] rounded-md w-full p-2" />
+        <span asp-validation-for="Consultation_fee" class="text-red-500 text-sm"></span>
+    </div>
+
+    <div>
+        <label asp-for="Phonenum" class="block text-gray-400 font-bold mb-1"></label>
+        <input asp-for="Phonenum" class="border border-gray-300 bg-[#0E1624] rounded-md w-full p-2" />
+        <span asp-validation-for="Phonenum" class="text-red-500 text-sm"></span>
+    </div>
+
+    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+        Update Doctor
+    </button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
