@@ -8,10 +8,9 @@ This project is built using **ASP.NET MVC** and **C#**.
 ## Features
 - Patient and Doctor Management
 - Appointment Scheduling
-- Admin Dashboard with Charts
+- Admin Dashboard
 
 ## Technologies
 - ASP.NET MVC
 - Entity Framework Core
 - SQL Server
-- Chart.js
