@@ -1,28 +1,36 @@
-﻿@model HospitalMngSys.Models.Doctor
+﻿@model HospitalMngSys.Models.Appointment
 
 <div class="max-w-xl mx-auto mt-10 bg-[#0E1624] text-[#99A1AF] rounded-lg shadow-lg p-6 border border-[#99A1AF]/30">
-    <h2 class="text-2xl font-bold mb-6 border-b border-[#99A1AF]/40 pb-2">Doctor Details</h2>
+    <h2 class="text-2xl font-bold mb-6 border-b border-[#99A1AF]/40 pb-2">Appointment Details</h2>
 
     <div class="grid grid-cols-1 gap-4">
         <div class=" flex justify-between border-b border-[#99A1AF]/20 pb-2">
             <span class="block font-semibold">ID</span>
-            <span>@Model.DoctorId</span>
+            <span>@Model.AppointmentId</span>
         </div>
         <div class="flex justify-between border-b border-[#99A1AF]/20 pb-2">
             <span class="block font-semibold">Name</span>
-            <span>@Model.Name</span>
+            <span>@Model.Patient_id</span>
         </div>
         <div class="flex justify-between border-b border-[#99A1AF]/20 pb-2">
             <span class="block font-semibold">Age</span>
-            <span>@Model.Specialization</span>
+            <span>@Model.Doctor_id</span>
         </div>
         <div class="flex justify-between border-b border-[#99A1AF]/20 pb-2">
             <span class="block font-semibold">Gender</span>
-            <span>@Model.Consultation_fee</span>
+            <span>@Model.Concern</span>
         </div>
         <div class="flex justify-between border-b border-[#99A1AF]/20 pb-2">
             <span class="block font-semibold">Phone Number</span>
-            <span>@Model.Phonenum</span>
+            <span>@Model.Status</span>
+        </div>
+        <div class="flex justify-between border-b border-[#99A1AF]/20 pb-2">
+            <span class="block font-semibold">Phone Number</span>
+            <span>@Model.Appointment_date</span>
+        </div>
+        <div class="flex justify-between border-b border-[#99A1AF]/20 pb-2">
+            <span class="block font-semibold">Phone Number</span>
+            <span>@Model.Appointment_time</span>
         </div>
     </div>
 

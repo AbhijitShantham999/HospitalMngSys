@@ -1,4 +1,5 @@
 ﻿using HospitalMngSys.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace HospitalMngSys.Repositories
 {
@@ -9,29 +10,58 @@ namespace HospitalMngSys.Repositories
         {
                 _context = context;
         }
-        public Task<Appointment> AddAsync()
+        public async Task<Appointment> Add(Appointment appmt)
         {
-            throw new NotImplementedException();
+            await _context.Appointments.AddAsync(appmt);
+            await _context.SaveChangesAsync();
+            return appmt;
         }
 
-        public Task<Appointment> DeleteAsync(int id)
+        public async Task<Appointment?> Delete(int id)
         {
-            throw new NotImplementedException();
+            var aptmt = await _context.Appointments.FindAsync(id);
+            if (aptmt == null)
+            {
+                Console.WriteLine("Appointment Not Found");
+                return null;
+            }
+            _context.Appointments.Remove(aptmt);
+            await _context.SaveChangesAsync();
+            return aptmt;
         }
 
-        public Task<List<Appointment>> GetAllAsync()
+        public async Task<List<Appointment>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _context.Appointments.ToListAsync();
         }
 
-        public Task<Appointment> GetByIdAsync(int id)
+        public async Task<Appointment?> GetById(int id)
         {
-            throw new NotImplementedException();
+            var appmt = await _context.Appointments.FindAsync(id);
+            if (appmt == null)
+            {
+                return null;
+            }
+            return appmt;
         }
 
-        public Task<Appointment> UpdateAsync(int id)
+        public async Task<Appointment> Update(Appointment appmt)
         {
-            throw new NotImplementedException();
+            var existingAptmt = await _context.Appointments.FindAsync(appmt.AppointmentId);
+            if (existingAptmt == null)
+            {
+                return null;
+            }
+            existingAptmt.AppointmentId = appmt.AppointmentId;
+            existingAptmt.Doctor_id = appmt.Doctor_id;
+            existingAptmt.Concern = appmt.Concern;
+            existingAptmt.Status = appmt.Status;
+            existingAptmt.Appointment_date = appmt.Appointment_date;
+            existingAptmt.Appointment_time = appmt.Appointment_time;
+            existingAptmt.Updated_at = appmt.Updated_at;
+
+            await _context.SaveChangesAsync();
+            return existingAptmt;
         }
     }
 }

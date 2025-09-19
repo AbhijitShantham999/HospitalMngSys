@@ -1,8 +1,39 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@* @model HospitalMngSys.Models; *@
+@{
+    // ViewBag["Title"] = "Dashboard";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="min-h-screen bg-[#0E1624] text-[#99A1AF] p-8">
+    <h1 class="text-3xl font-bold mb-8 text-center">🏥 Hospital Management Dashboard</h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Patients -->
+        <a href="/Patient/Index" class="block bg-gradient-to-br from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 rounded-lg shadow-lg p-6 text-center transition duration-300">
+            <h2 class="text-xl font-semibold mb-2 text-white">Patients</h2>
+            <p class="text-4xl font-bold text-white">@ViewBag.TotalPatients</p>
+            <p class="mt-2 text-md text-[#99A1AF]">View all patients</p>
+        </a>
+
+        <!-- Doctors -->
+        <a href="/Doctor/Index" class="block bg-gradient-to-br from-green-600 to-green-800 hover:from-green-700 hover:to-green-900 rounded-lg shadow-lg p-6 text-center transition duration-300">
+            <h2 class="text-xl font-semibold mb-2 text-white">Doctors</h2>
+            <p class="text-4xl font-bold text-white">@ViewBag.TotalDoctors</p>
+            <p class="mt-2 text-md text-[#99A1AF]">View all doctors</p>
+        </a>
+
+        <!-- Scheduled Appointments -->
+        <a href="/Appointment/Index" class="block bg-gradient-to-br from-yellow-500 to-yellow-700 hover:from-yellow-600 hover:to-yellow-800 rounded-lg shadow-lg p-6 text-center transition duration-300">
+            <h2 class="text-xl font-semibold mb-2 text-white">Scheduled</h2>
+            <p class="text-4xl font-bold text-white">@ViewBag.TotalScheduled</p>
+            <p class="mt-2 text-md text-[#0E1624]">View scheduled appointments</p>
+        </a>
+
+        <!-- Completed Appointments -->
+        <a href="/Appointment/Index" class="block bg-gradient-to-br from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 rounded-lg shadow-lg p-6 text-center transition duration-300">
+            <h2 class="text-xl font-semibold mb-2 text-white">Completed</h2>
+            <p class="text-4xl font-bold text-white">@ViewBag.TotalCompleted</p>
+            <p class="mt-2 text-md text-[#99A1AF]">View completed appointments</p>
+        </a>
+    </div>
 </div>
+

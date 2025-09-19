@@ -8,13 +8,20 @@ namespace HospitalMngSys.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly HospitalMngSysDbContext _context;
+
+        public HomeController(ILogger<HomeController> logger, HospitalMngSysDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
+            ViewBag.TotalPatients = _context.Patients.Count();
+            ViewBag.TotalDoctors = _context.Doctors.Count();
+            ViewBag.TotalScheduled = _context.Appointments.Where(app => app.Status == "Scheduled").ToList().Count();
+            ViewBag.TotalCompleted = _context.Appointments.Where(app => app.Status == "Completed").ToList().Count();
             return View();
         }
 

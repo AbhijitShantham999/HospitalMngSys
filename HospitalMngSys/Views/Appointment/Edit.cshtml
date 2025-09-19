@@ -1,0 +1,62 @@
+﻿@model HospitalMngSys.Models.Appointment;
+@{
+}
+
+<h2 class="text-2xl font-bold mb-4">Update Appointment</h2>
+
+<form asp-action="Edit" asp-controller="Appointment" method="post" class="space-y-4 max-w-lg">
+    @Html.AntiForgeryToken()
+
+    @* <div asp-validation-summary="All" class="text-red-500 mb-2"></div> *@
+
+    <input type="hidden" asp-for="AppointmentId" />
+
+    <div>
+        <label asp-for="Patient_id" class="block text-gray-400 font-bold mb-1"></label>
+        <input disabled asp-for="Patient_id" class="border border-gray-300 bg-[#0E1624] rounded-md w-full p-2" />
+        <span asp-validation-for="Patient_id" class="text-red-500 text-sm"></span>
+    </div>
+
+    <div>
+        <label asp-for="Doctor_id" class="block text-gray-400 font-bold mb-1"></label>
+        <input asp-for="Doctor_id" class="border border-gray-300 bg-[#0E1624] rounded-md w-full p-2" />
+        <span asp-validation-for="Doctor_id" class="text-red-500 text-sm"></span>
+    </div>
+
+    <div>
+        <label asp-for="Concern" class="block text-gray-400 font-bold mb-1"></label>
+        <input asp-for="Concern" class="border border-gray-300 bg-[#0E1624] rounded-md w-full p-2" />
+        <span asp-validation-for="Concern" class="text-red-500 text-sm"></span>
+    </div>
+
+    <div>
+        <label asp-for="Status" class="block text-gray-400 font-bold mb-1"></label>
+        <select asp-for="Status" class="form-control border border-gray-300 bg-[#0E1624] rounded-md w-full p-2">
+            <option value="">Select Status</option>
+            <option value="Scheduled">Scheduled</option>
+            <option value="Completed">Completed</option>
+            <option value="Cancelled">Cancelled</option>
+        </select>
+        <span asp-validation-for="Status" class="text-red-500 text-sm"></span>
+    </div>
+
+    <div>
+        <label asp-for="Appointment_date" class="block text-gray-400 font-bold mb-1"></label>
+        <input type="date" asp-for="Appointment_date" class="border border-gray-300 bg-[#0E1624] rounded-md w-full p-2" />
+        <span asp-validation-for="Appointment_date" class="text-red-500 text-sm"></span>
+    </div>
+
+    <div>
+        <label asp-for="Appointment_time" class="block text-gray-400 font-bold mb-1"></label>
+        <input type="time" asp-for="Appointment_time" class="border border-gray-300 bg-[#0E1624] rounded-md w-full p-2" />
+        <span asp-validation-for="Appointment_time" class="text-red-500 text-sm"></span>
+    </div>
+
+    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+        Update Appointment
+    </button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -12,6 +12,7 @@ builder.Services.AddDbContext<HospitalMngSysDbContext>(item => item.UseSqlServer
 
 builder.Services.AddScoped<IPatientRepository, PatientRepository>();
 builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 
 var app = builder.Build();
 

@@ -4,12 +4,12 @@ namespace HospitalMngSys.Repositories
 {
     public interface IAppointmentRepository
     {
-        Task<List<Appointment>> GetAllAsync();
-        Task<Appointment> AddAsync();
-        Task<Appointment> GetByIdAsync(int id);
+        Task<List<Appointment>> GetAll();
+        Task<Appointment> Add(Appointment appmt);
+        Task<Appointment?> GetById(int id);
 
-        Task<Appointment> UpdateAsync(int id);
+        Task<Appointment> Update(Appointment appmt);
 
-        Task<Appointment> DeleteAsync(int id);
+        Task<Appointment?> Delete(int id);
     }
 }
