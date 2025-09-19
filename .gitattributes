@@ -2,8 +2,14 @@
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
 * text=auto
-*.cs linguist-language=C#
-*.cshtml linguist-language=HTML
+# Force GitHub to detect this as C#
+*.cs linguist-detectable=true
+*.cshtml linguist-language=C#
+*.csproj linguist-language=C#
+*.css linguist-vendored
+*.js linguist-vendored
+*.html linguist-vendored
+
 ###############################################################################
 # Set default behavior for command prompt diff.
 #
