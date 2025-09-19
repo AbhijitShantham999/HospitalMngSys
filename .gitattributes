@@ -4,8 +4,8 @@
 * text=auto
 # Force GitHub to detect this as C#
 *.cs linguist-detectable=true
-*.cshtml linguist-language=C#
-*.csproj linguist-language=C#
+*.cshtml linguist-language=Asp.net C#
+*.csproj linguist-language=Asp.net C#
 *.css linguist-vendored
 *.js linguist-vendored
 *.html linguist-vendored
